@@ -1,0 +1,12 @@
+<!doctype html>
+<Title>Show Database</title>
+<h1>Show Database</h1>
+{% if not session.login %}
+  <input type=button value=Login onclick=location.href="{{ url_for('login') }}">
+{% else %}
+  <input type=button value=Logout onclick=location.href="{{ url_for('logout') }}">
+{% endif %}
+  <input type=button value=Home onclick=location.href="{{ url_for('home') }}">
+  <input type=button value=Show onclick=location.href="{{ url_for('show_db') }}">
+{% block body %}{% endblock %}
+

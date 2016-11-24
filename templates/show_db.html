@@ -1,0 +1,44 @@
+{% extends "homepage.html" %}
+{% block body %}
+{% if session.login %}
+  <form action="{{ url_for('show_db') }}">
+  <dl>
+    <dt><h2>Maillist</h2>
+    {% for mail in maillist %}
+    <dd>Username : {{ mail.username }}
+    <dd>Usermail : {{ mail.usermail }}
+    <dd>Title : {{ mail.title }}
+    <dd>Sendername : {{ mail.sendername}}
+    <dd>Sendermail : {{ mail.sendermail }}
+    <br>
+    <br> 
+    {% else %} 
+    <li><em>There is no content in maillist.</em></li>
+    {% endfor %}
+  </dl>
+ 
+  <dl>   
+    <dt><h2>DNS</h2>
+    {% for dns in dnslist %}
+    <dd>URL : {{ dns.url }}
+    <dd>TTL : {{ dns.ttl }}
+    <dd>IP : {{ dns.ip }}
+    <br>
+    {% else %} 
+      <li><em>There is no content in dnslist.</em></li>
+    {% endfor %}
+  </dl>
+
+  <dl>
+    <dt><h2>KAKAO</h2>
+    {% for kakao in kakaolist %}
+    <dd>URL : {{ kakao.url }}
+    <br>
+    {% else %}
+      <li><em>There is no content in kakaolist.</em></li>
+    {% endfor %}
+  </dl>
+{% else %}
+  <li><em>Permission denied.</em></li>
+{% endif %}
+{% endblock %}
