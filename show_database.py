@@ -17,9 +17,15 @@ app.config.from_object(__name__)
 def connect_db():
 	return sqlite3.connect(app.config['DATABASE'])
 
-#get db
-def get_db():
+#before_request
+@app.before_request
+def before_request():
 	g.db = connect_db()
+
+#teardown_request
+@app.teardown_request
+def teardown_request(exception):
+	g.db.close()
 
 #get maillist
 def get_mail():
@@ -47,7 +53,6 @@ def home():
 #show db
 @app.route('/show')
 def show_db():
-	get_db()
 	maillist=[]
 	dnslist=[]
 	kakaolist=[]
