@@ -4,8 +4,8 @@ import sqlite3
 
 #configuration
 SECRET_KEY='development key'
-ID='hellopjhs'
-PASSWORD='admin'
+ID='admin'
+PASSWORD='11'
 DEBUG=True
 DATABASE='result.db'
 
@@ -71,8 +71,10 @@ def login():
 			error='Invalid ID'
 		elif request.form['password'] != app.config['PASSWORD']:
 			error='Invalid Password'
+		else:
+			session['login']=True
 			flash('You were logged in!')
-			return redirect(url_for('show_db'))
+			return redirect(url_for('home'))
 	return render_template('login.html', error=error)
 
 #logout
@@ -84,5 +86,3 @@ def logout():
 
 if __name__ == '__main__':
 	app.run()
-
-
