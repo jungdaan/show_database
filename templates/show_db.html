@@ -4,41 +4,73 @@
   <form action="{{ url_for('show_db') }}">
   <dl>
     <dt><h2>Maillist</h2>
-    {% for mail in maillist %}
-    <dd>Username : {{ mail.username }}
-    <dd>Usermail : {{ mail.usermail }}
-    <dd>Title : {{ mail.title }}
-    <dd>Sendername : {{ mail.sendername}}
-    <dd>Sendermail : {{ mail.sendermail }}
-    <br>
-    <br> 
-    {% else %} 
-    <li><em>There is no content in maillist.</em></li>
-    {% endfor %}
+    <table class="table table-striped">
+      <thread>
+        <tr>
+          <th>#</th>
+          <th>Username</th>
+          <th>Usermail</th>
+          <th>Title</th>
+          <th>Sendername</th>
+          <th>Sendermail</th>
+        </tr>
+      </thread>
+      <tbody>
+          {% for mail in maillist %}
+          <tr>
+            <td>{{ mail.id }}</td>
+            <td>{{ mail.username }}</td>
+            <td>{{ mail.usermail }}</td>
+            <td>{{ mail.title }}</td>
+            <td>{{ mail.sendername}}</td>
+            <td>{{ mail.sendermail }}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>   
   </dl>
- 
-  <dl>   
+
+  <dl>
     <dt><h2>DNS</h2>
-    {% for dns in dnslist %}
-    <dd>URL : {{ dns.url }}
-    <dd>TTL : {{ dns.ttl }}
-    <dd>IP : {{ dns.ip }}
-    <br>
-    {% else %} 
-      <li><em>There is no content in dnslist.</em></li>
-    {% endfor %}
+      <table class="table">
+        <thread>
+          <tr>
+            <th>#</th>
+            <th>URL</th>
+            <th>TTL</th>
+            <th>IP</th>
+          </tr>
+        </thread>
+        <tbody>
+            {% for dns in dnslist %}
+            <tr>
+              <td>{{ dns.id }}</td>
+              <td>{{ dns.url }}</td>
+              <td>{{ dns.ttl }}</td>
+              <td>{{ dns.ip }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
   </dl>
 
   <dl>
     <dt><h2>KAKAO</h2>
-    {% for kakao in kakaolist %}
-    <dd>URL : {{ kakao.url }}
-    <br>
-    {% else %}
-      <li><em>There is no content in kakaolist.</em></li>
-    {% endfor %}
-  </dl>
-{% else %}
-  <li><em>Permission denied.</em></li>
+      <table class="table">
+        <thread>
+          <tr>
+            <th>#</th>
+            <th>URL</th>
+          </tr>
+        </thread>
+        <tbody>
+            {% for kakao in kakaolist %}
+            <tr>
+              <td>{{ dns.id }}</td>
+              <td>{{ kakao.url }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
 {% endif %}
 {% endblock %}

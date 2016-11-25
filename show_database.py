@@ -29,20 +29,20 @@ def teardown_request(exception):
 
 #get maillist
 def get_mail():
-	cur = g.db.execute('select username, usermail, title, sender_name, sender_mail from maillist')
-	maillist = [dict(username=row[0], usermail=row[1], title=row[2], sendername=row[3], sendermail=row[4]) for row in cur.fetchall()]
+	cur = g.db.execute('select id, username, usermail, title, sender_name, sender_mail from maillist')
+	maillist = [dict(id=row[0], username=row[1], usermail=row[2], title=row[3], sendername=row[4], sendermail=row[5]) for row in cur.fetchall()]
 	return maillist
 
 #get dns
 def get_dns():
-	cur = g.db.execute('select name, ttl, data from dns')
-	dnslist = [dict(url=row[0], ttl=row[1], ip=row[2]) for row in cur.fetchall()]
+	cur = g.db.execute('select id, name, ttl, data from dns')
+	dnslist = [dict(id=row[0], url=row[1], ttl=row[2], ip=row[3]) for row in cur.fetchall()]
 	return dnslist
 
 #get kakao
 def get_kakao():
-	cur = g.db.execute('select url from kakao')
-	kakaolist = [dict(url=row[0]) for row in cur.fetchall()]
+	cur = g.db.execute('select id, url from kakao')
+	kakaolist = [dict(id=row[0], url=row[1]) for row in cur.fetchall()]
 	return kakaolist
 
 #homepage
