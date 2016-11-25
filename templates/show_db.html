@@ -1,76 +1,9 @@
-{% extends "homepage.html" %}
-{% block body %}
+<h2>Show - Menu</h2>
 {% if session.login %}
-  <form action="{{ url_for('show_db') }}">
-  <dl>
-    <dt><h2>Maillist</h2>
-    <table class="table table-striped">
-      <thread>
-        <tr>
-          <th>#</th>
-          <th>Username</th>
-          <th>Usermail</th>
-          <th>Title</th>
-          <th>Sendername</th>
-          <th>Sendermail</th>
-        </tr>
-      </thread>
-      <tbody>
-          {% for mail in maillist %}
-          <tr>
-            <td>{{ mail.id }}</td>
-            <td>{{ mail.username }}</td>
-            <td>{{ mail.usermail }}</td>
-            <td>{{ mail.title }}</td>
-            <td>{{ mail.sendername}}</td>
-            <td>{{ mail.sendermail }}</td>
-          </tr>
-          {% endfor %}
-      </tbody>
-    </table>   
-  </dl>
-
-  <dl>
-    <dt><h2>DNS</h2>
-      <table class="table">
-        <thread>
-          <tr>
-            <th>#</th>
-            <th>URL</th>
-            <th>TTL</th>
-            <th>IP</th>
-          </tr>
-        </thread>
-        <tbody>
-            {% for dns in dnslist %}
-            <tr>
-              <td>{{ dns.id }}</td>
-              <td>{{ dns.url }}</td>
-              <td>{{ dns.ttl }}</td>
-              <td>{{ dns.ip }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-      </table>
-  </dl>
-
-  <dl>
-    <dt><h2>KAKAO</h2>
-      <table class="table">
-        <thread>
-          <tr>
-            <th>#</th>
-            <th>URL</th>
-          </tr>
-        </thread>
-        <tbody>
-            {% for kakao in kakaolist %}
-            <tr>
-              <td>{{ dns.id }}</td>
-              <td>{{ kakao.url }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-      </table>
+	<input type="button" value="Back go home" onclick='location.href="{{ url_for('home') }}"'>
+    <input type="button" value="Maillist" onclick='location.href="{{ url_for('Maillist_db') }}"'>
+    <input type="button" value="DNS" onclick='location.href="{{ url_for('DNS_db') }}"'>
+    <input type="button" value="Kakao" onclick='location.href="{{ url_for('KAKAO_db') }}"'>
 {% endif %}
+{% block body %}
 {% endblock %}

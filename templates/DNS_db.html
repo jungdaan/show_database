@@ -1,0 +1,27 @@
+{% extends "show_db.html" %}
+{% block body %}
+{% if error %}<em>Error : {{ error }}</em>{% endif %}
+	  <dl>
+	  	  <dt><h2>DNS</h2>
+		      <table class="table">
+		        <thread>
+		          <tr>
+		            <th>#</th>
+		            <th>URL</th>
+		            <th>TTL</th>
+		            <th>IP</th>
+		          </tr>
+		        </thread>
+		        <tbody>
+		            {% for dns in dnslist %}
+		            <tr>
+		              <td>{{ dns.id }}</td>
+		              <td>{{ dns.url }}</td>
+		              <td>{{ dns.ttl }}</td>
+		              <td>{{ dns.ip }}</td>
+		            </tr>
+		            {% endfor %}
+		        </tbody>
+		      </table>
+	  </dl>
+{% endblock %}

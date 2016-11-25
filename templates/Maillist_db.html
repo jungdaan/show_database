@@ -1,0 +1,31 @@
+{% extends "show_db.html" %}
+{% block body %}
+{% if error %}<em>Error : {{ error }}</em>{% endif %}
+	<dl>
+		<dt><h2>Maillist</h2>
+		    <table class="table">
+		      <thread>
+		        <tr>
+		          <th>#</th>
+		          <th>Username</th>
+		          <th>Usermail</th>
+		          <th>Title</th>
+		          <th>Sendername</th>
+		          <th>Sendermail</th>
+		        </tr>
+		      </thread>
+		      <tbody>
+		          {% for mail in maillist %}
+		          <tr>
+		            <td>{{ mail.id }}</td>
+		            <td>{{ mail.username }}</td>
+		            <td>{{ mail.usermail }}</td>
+		            <td>{{ mail.title }}</td>
+		            <td>{{ mail.sendername}}</td>
+		            <td>{{ mail.sendermail }}</td>
+		          </tr>
+		          {% endfor %}
+		      </tbody>
+		    </table>   
+	  </dl>
+{% endblock %}

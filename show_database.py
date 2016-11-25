@@ -53,14 +53,31 @@ def home():
 #show db
 @app.route('/show')
 def show_db():
+	return render_template('show_db.html')
+
+#maillist db
+@app.route('/maillist')
+def Maillist_db():
 	maillist=[]
-	dnslist=[]
-	kakaolist=[]
 	maillist = get_mail()
+
+	return render_template('Maillist_db.html', maillist=maillist)
+
+#dns db
+@app.route('/dns')
+def DNS_db():
+	dnslist=[]
 	dnslist = get_dns()
+
+	return render_template('DNS_db.html', dnslist=dnslist)
+
+#kakao db
+@app.route('/kakao')
+def KAKAO_db():
+	kakaolist=[]
 	kakaolist = get_kakao()
 
-	return render_template('show_db.html', maillist=maillist, dnslist=dnslist, kakaolist=kakaolist)
+	return render_template('KAKAO_db.html', kakaolist=kakaolist)
 
 #login
 @app.route('/login', methods=['GET', 'POST'])
