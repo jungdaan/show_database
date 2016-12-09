@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<linSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+<div style="MARGIN: 5px 30px;">
+<h1>Show Database</h1>
+    
+            
 
-	<Title>Show Database</title>
-    <!-- 부트스트랩 -->
-    <link href="{{ url_for('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+</head>
+    
+<body>
+    
+	<div class"panel panel-default">
+	<div class"panel-body">
+        <img src="daan.png" alt"다안띠삐뽀"border"3px" width="1000px" height="500px" display: block; margine-left: auto; margin-right: auto;><br></br>
 
-    <!-- IE8 에서 HTML5 요소와 미디어 쿼리를 위한 HTML5 shim 와 Respond.js -->
-    <!-- WARNING: Respond.js 는 당신이 file:// 을 통해 페이지를 볼 때는 동작하지 않습니다. -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-
-	<h1>Show Database</h1>
 	{% if not session.login %}
-	  <input type=button value=Login onclick=location.href="{{ url_for('login') }}">
+	  <input type=button class="btn btn-primary" value=Login onclick=location.href="{{ url_for('login') }}">
 	{% else %}
-	  <input type=button value=Logout onclick=location.href="{{ url_for('logout') }}">
+	  <input type=button class="btn btn-default" value=Logout onclick=location.href="{{ url_for('logout') }}">
 	{% endif %}
-	  <input type=button value=Home onclick=location.href="{{ url_for('home') }}">
-	  <input type=button value=Show onclick=location.href="{{ url_for('show_db') }}">
+	  <input type=button class="btn btn-default" value=Home onclick=location.href="{{ url_for('home') }}">
+	  <input type=button class="btn btn-default" value=Show onclick=location.href="{{ url_for('show_db') }}">
 	{% block body %}{% endblock %}
+        
+      
     <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
     <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
-  </body>
+</div>
+<div>  
+</body>
 </html>
